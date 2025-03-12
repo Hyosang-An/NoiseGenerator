@@ -1,0 +1,13 @@
+Language: Cpp
+BasedOnStyle: Microsoft
+#BasedOnStyle: Google
+
+# TabWidth:        4 # 기본값 8
+# IndentWidth:     4 # 기본값 2
+# UseTab:          Never # 기본값 Never
+# AccessModifierOffset: -2 # 기본값 -2
+
+PointerAlignment: Left
+ColumnLimit: 150
+AllowShortFunctionsOnASingleLine: All
+BreakTemplateDeclarations: Yes
