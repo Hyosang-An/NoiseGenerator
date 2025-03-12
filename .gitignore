@@ -1,0 +1,24 @@
+# Visual Studio 관련 파일
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# 빌드 산출물
+[Bb]in/
+[Oo]bj/
+Debug/
+Release/
+
+# C++ 전용 파일
+*.ncb
+*.sdf
+*.ipch
+*.obj
+*.pdb
+*.ilk
+
+# DirectX 쉐이더 바이너리 (필요한 경우)
+*.fxo
+*.cso
