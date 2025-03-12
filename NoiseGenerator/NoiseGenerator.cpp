@@ -3,12 +3,20 @@
 #include <cmath>
 #include <iostream>
 
+
 struct vector2
 {
     float x, y;
 };
 
-const int PERIOD = 5; // 원하는 주기(period)를 설정합니다.
+// 최초에 그리드 몇개로 나눌지 (x방향, y방향 동일하게 적용)
+const int PERIOD = 5;
+
+// 이미지 사이즈
+const int windowWidth = 800;
+const int windowHeight = 800;
+// FBM을 위한 옥타브 파라미터
+const int OCTAVES = 3;
 
 // 주어진 그리드 좌표를 주기(period) 내에서 wrap-around하도록 처리하여 랜덤 그라디언트를 생성합니다.
 vector2 randomGradient(int ix, int iy)
@@ -86,8 +94,6 @@ float perlin(float x, float y)
 
 int main()
 {
-    const int windowWidth = 800;
-    const int windowHeight = 800;
 
     sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "Seamless Perlin Noise");
 
@@ -98,8 +104,7 @@ int main()
     float periodNormalizedX = (float)PERIOD / windowWidth; // 예시: windowWidth 크기에 맞춰 period 적용
     float periodNormalizedY = (float)PERIOD / windowHeight;
 
-    // FBM을 위한 옥타브 파라미터
-    const int OCTAVES = 1;
+
     float baseFreq = 1.0f;
     float baseAmp = 1.0f;
 
@@ -154,6 +159,19 @@ int main()
         window.clear();
         window.draw(sprite);
         window.display();
+    }
+
+    sf::Image image;
+    image.create(windowWidth, windowHeight, pixels);
+
+    std::string filepath = "../seamless_noise.png";
+    if (image.saveToFile(filepath))
+    {
+        std::cout << "Image saved successfully." << std::endl;
+    }
+    else
+    {
+        std::cout << "Failed to save the image." << std::endl;
     }
 
     delete[] pixels;
